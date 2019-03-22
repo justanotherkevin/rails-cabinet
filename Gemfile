@@ -14,6 +14,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.6', '>= 4.6.1'
 gem 'simple_form', '~> 4.1'
 gem 'haml', '~> 5.0', '>= 5.0.4'
+gem 'rb-readline'
+gem 'awesome_print', require: 'ap'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
