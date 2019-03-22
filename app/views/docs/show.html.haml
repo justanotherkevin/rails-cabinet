@@ -1,8 +1,19 @@
 %h1 this is doc show
-#doc-show
-  .content
+#single-doc-show
+  .single-doc-content
     %h3= @doc.title
     %p= @doc.content
     %p
       %span= time_ago_in_words(@doc.created_at)
       %span ago
+    %ul
+      %li
+        = link_to 'edit', edit_doc_path(@doc)
+      %li
+        = link_to 'delete',
+          doc_path(@doc),
+          method: :delete,
+          data: { confirm: 'Are you sure?' }
+
+  .single-doc-nav
+    = link_to('All Docs', docs_path)

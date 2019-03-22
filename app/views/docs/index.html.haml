@@ -5,3 +5,5 @@
     %p
       %span= time_ago_in_words(doc.created_at)
       %span ago
+  .docs-nav
+    = link_to 'new doc', new_doc_path
