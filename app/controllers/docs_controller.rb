@@ -1,12 +1,11 @@
 class DocsController < ApplicationController
   before_action :find_doc, only: [:show, :edit, :update, :destory ]
   def index
-    @docs = Doc.all.order("created_at DESC")
+    @docs = Doc.where( user_id: current_user)
   end
   def show
   end
   def new
-    p current_user, ' ############################ currrent user'
     @doc = current_user.docs.build
   end
   def create
