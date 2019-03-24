@@ -16,6 +16,7 @@ gem 'simple_form', '~> 4.1'
 gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'rb-readline'
 gem 'awesome_print', require: 'ap'
+gem 'trix-rails', require: 'trix'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

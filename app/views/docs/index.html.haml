@@ -1,9 +1,13 @@
 .docs-wrapper
-  - @docs.each do |doc|
-    %h3= link_to doc.title, doc
-    %p= doc.content
-    %p
-      %span= time_ago_in_words(doc.created_at)
-      %span ago
-  .docs-nav
-    = link_to 'new doc', new_doc_path
+  - if @docs.present?
+    .doc-wrapper
+      - @docs.each do |doc|
+        %h3= link_to doc.title, doc
+        %p= simple_format(doc.content)
+        %p
+          %span= time_ago_in_words(doc.created_at)
+          %span ago
+  - else
+    .docs-nav
+      %h2 Create Doc!
+      %button= link_to 'new doc', new_doc_path
