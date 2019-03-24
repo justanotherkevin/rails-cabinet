@@ -1,1 +1,18 @@
-%h1 this is the place holder
+#banner
+  .banner-content
+    %h1 File Cabinet
+    %p your work organized
+    %button= link_to "Enter", new_user_registration_path
+
+#callouts
+  .callout-inner
+    .wrapper
+      .callout
+        %h2 Organize
+        %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+
+#button-cta
+  .wrapper
+    %h2 Go Ahead!
+    %br
+    %button= link_to('Join Now', new_user_registration_path)

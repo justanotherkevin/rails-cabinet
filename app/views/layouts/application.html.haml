@@ -1,0 +1,25 @@
+
+%html
+  %head
+    %title app title | or another title
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+    .page-nav-bar
+      .page-nav-links
+        = link_to('Home', root_path )
+        %ul
+          %li= link_to('docs', docs_path)
+          - if user_signed_in?
+            %li= link_to('create doc', new_doc_path)
+            %li= link_to('sign out', destroy_user_session_path, method: :delete )
+          -else
+            %li= link_to('log in', new_user_session_path)
+    .user-errors-message
+      %p.notice= notice
+      %p.alert= alert
+
+    = yield
