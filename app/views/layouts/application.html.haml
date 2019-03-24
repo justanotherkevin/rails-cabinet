@@ -10,16 +10,22 @@
     -# = stylesheet_link_tag    'trix.css'
 
   %body
-    .page-nav-bar
-      .page-nav-links
-        = link_to('Home', root_path )
-        %ul
-          %li= link_to('docs', docs_path)
-          - if user_signed_in?
-            %li= link_to('create doc', new_doc_path)
-            %li= link_to('sign out', destroy_user_session_path, method: :delete )
-          -else
-            %li= link_to('log in', new_user_session_path)
+    .page-nav-bar.sticky-top.py-1
+
+      .page-nav-links.container.d-flex.flex-md-row.justify-content-between
+        = link_to('Home', root_path, class: 'py-2')
+        = link_to('docs', docs_path, class: 'py-2')
+        - if user_signed_in?
+          = link_to('create doc', new_doc_path, class: 'py-2')
+          = link_to('sign out', destroy_user_session_path, method: :delete, class: 'py-2' )
+        -else
+          = link_to('log in', new_user_session_path)
+    .toast.fade.show{ :role=> "alert", :aria-live=>"assertive", :aria-atomic=>"true" }
+      .toast-header
+        %svg.rounded.mr-2{:width=> 20, :height=> 20, :alt=>"..."}
+          %rect{:width=>"100%", :height=>"100%", :fill=>"#007aff"}
+        %strong.mr-auto= notice
+
     .user-errors-message
       %p.notice= notice
       %p.alert= alert
