@@ -11,7 +11,6 @@
 
   %body
     .page-nav-bar.sticky-top.py-1
-
       .page-nav-links.container.d-flex.flex-md-row.justify-content-between
         = link_to('Home', root_path, class: 'py-2')
         = link_to('docs', docs_path, class: 'py-2')
@@ -20,14 +19,18 @@
           = link_to('sign out', destroy_user_session_path, method: :delete, class: 'py-2' )
         -else
           = link_to('log in', new_user_session_path)
-    .toast.fade.show{ :role=> "alert", :aria-live=>"assertive", :aria-atomic=>"true" }
+
+    .toast.fade{:class=> ('show' if notice), :id=>'app-toast', :role=> "alert", :aria => {:live => "assertive", :atomic => "true" } }
       .toast-header
         %svg.rounded.mr-2{:width=> 20, :height=> 20, :alt=>"..."}
           %rect{:width=>"100%", :height=>"100%", :fill=>"#007aff"}
-        %strong.mr-auto= notice
-
-    .user-errors-message
-      %p.notice= notice
-      %p.alert= alert
+        %strong.mr-auto= alert
+        %small time ago
+        %button.ml-2.mb-1.close{ :aria => {:label =>  "close"} }
+          %span{:name=>'close-toaster'} x
+      .toast-body= notice
+    -# .user-errors-message
+    -#   %p.notice= notice
+    -#   %p.alert= alert
 
     = yield
